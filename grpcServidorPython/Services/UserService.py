@@ -20,8 +20,8 @@ class UserService(pb2_grpc.UserService):
             'email': request.email,
             'idade': request.idade
         })
-        print('Usuário adicionado:', request.name)
-        return pb2.UserResponse(**{'id': id, 'name' : request.name, 'email': request.email, 'msg': 'add ok', 'idade': request.idade})
+        print('Usuário adicionado:', request.idade)
+        return pb2.UserResponse(**{'id': id, 'name' : request.name, 'email': request.email, 'idade': request.idade, 'msg': 'add ok'})
 
     def GetUser(self, request, context):
         # busca na lista
@@ -29,9 +29,9 @@ class UserService(pb2_grpc.UserService):
         #Se nenhum item for encontrado, ele retorna o valor padrão: None=nenhum
         user = next((usuario for usuario in usuarios if usuario['id'] == int(request.id)), None)
         if user:
-            return pb2.UserResponse(**{'id': user['id'], 'name' : user['name'], 'idade': user['idade'], 'email': user['email'], 'msg': 'get ok'})
+            return pb2.UserResponse(**{'id': user['id'], 'name' : user['name'], 'email': user['email'], 'idade': user['idade'], 'msg': 'get ok'})
         else:
-            return pb2.UserResponse(**{'id': 0, 'name' : '', 'idade': '', 'email': '', 'msg': 'get erro'})
+            return pb2.UserResponse(**{'id': 0, 'name' : '', 'email': '', 'idade': '', 'msg': 'get erro'})
 
     def UpdateUser(self, request, context):
         # busca na lista

@@ -13,6 +13,7 @@ message UserRequest {
     int32 id = 1;
     string name = 2;
     string email = 3;
+    int32 idade = 4;
 }
 
 message UserIdRequest {
@@ -23,5 +24,6 @@ message UserResponse {
     int32 id = 1;
     string name = 2;
     string email = 3;
-    string msg = 4;
+    int32 idade = 4;
+    string msg = 5;
 }
